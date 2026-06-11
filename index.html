@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Katherine Moattar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blush: #f2e4e1; --blush-mid: #e8d0cb; --blush-dark: #d4a9a0;
+  --rose: #c47d74; --rose-dark: #9c5b54;
+  --ink: #1e1a1a; --ink-mid: #5a4f4f; --ink-light: #9a8e8e;
+  --white: #fdfaf9;
+  --script: 'Dancing Script', cursive;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--ink); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 64px;
+  background: rgba(253,250,249,0.92); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--blush-mid);
+}
+.nav-monogram {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--rose);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 14px; font-weight: 600;
+  color: var(--rose); letter-spacing: 0.05em;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--rose); }
+.nav-resume { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); padding: 8px 20px; text-decoration: none; transition: all 0.2s; }
+.nav-resume:hover { background: var(--ink); color: var(--white); }
+
+/* HERO */
+.hero { padding-top: 64px; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.hero-left { padding: 5rem 4rem 5rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+.hero-script { font-family: var(--sans); font-size: 22px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); line-height: 1.1; margin-bottom: 0.5rem; animation: fadeUp 0.7s ease 0.1s both; }
+.hero-name { font-family: var(--script); font-size: clamp(52px, 5.5vw, 76px); font-weight: 600; letter-spacing: 0.01em; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; animation: fadeUp 0.7s ease 0.25s both; }
+.hero-role { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem; animation: fadeUp 0.7s ease 0.3s both; }
+.hero-sub { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 2.5rem; animation: fadeUp 0.7s ease 0.35s both; }
+.hero-bio { font-size: 15px; color: var(--ink-mid); font-weight: 300; line-height: 1.85; max-width: 400px; margin-bottom: 3rem; animation: fadeUp 0.7s ease 0.45s both; }
+.hero-btn { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--white); padding: 14px 32px; text-decoration: none; transition: background 0.2s; width: fit-content; animation: fadeUp 0.7s ease 0.55s both; }
+.hero-btn:hover { background: var(--rose-dark); }
+.hero-right { background: var(--blush); display: flex; flex-direction: column; gap: 0; padding: 80px 4rem 3rem 3rem; position: relative; }
+.hero-img-main { flex: 1; background: var(--blush-mid); overflow: hidden; position: relative; min-height: 400px; }
+.hero-img-main img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+/* STATS STRIP */
+.about-strip { background: var(--ink); padding: 3.5rem 5rem; display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr; gap: 2rem; align-items: center; }
+.about-divider { background: rgba(255,255,255,0.12); align-self: stretch; }
+.about-stat { text-align: center; }
+.about-stat-num { font-family: var(--serif); font-size: 38px; font-weight: 300; color: var(--white); line-height: 1; margin-bottom: 6px; }
+.about-stat-num em { font-style: italic; color: var(--blush-dark); }
+.about-stat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 400; }
+
+/* SKILLS */
+.skills-section { background: var(--blush); padding: 6rem 5rem; }
+.skills-header { margin-bottom: 3rem; }
+.skills-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+.skills-heading { font-family: var(--script); font-size: 58px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+.skills-desc { font-size: 14px; color: var(--ink-mid); font-weight: 300; line-height: 1.9; max-width: 640px; margin-bottom: 3rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--blush-mid); margin-bottom: 0; }
+.skill-card { background: var(--white); padding: 2rem 1.75rem; border-right: 1px solid var(--blush-mid); }
+.skill-card:last-child { border-right: none; }
+.skill-card-title { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--rose); display: block; }
+.skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.skill-card li { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.5; padding-left: 12px; position: relative; }
+.skill-card li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--blush-dark); position: absolute; left: 0; top: 7px; }
+/* TOOLS */
+.tools-divider { border: none; border-top: 1px solid var(--blush-mid); margin: 3.5rem 0 2.5rem; }
+.tools-label { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 2rem; }
+.tools-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.tool-group-name { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.75rem; }
+.tool-group-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-item { font-size: 12px; color: var(--ink-mid); font-weight: 400; background: var(--blush-mid); padding: 3px 10px; }
+.channels-row { display: flex; align-items: baseline; gap: 3rem; margin-top: 2.5rem; padding: 1.75rem 2rem; background: var(--ink); }
+.channels-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); white-space: nowrap; flex-shrink: 0; }
+.channels-list { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; }
+.channel-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 300; white-space: nowrap; }
+.channel-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); flex-shrink: 0; display: inline-block; }
+/* WORK */
+.work-section { padding: 6rem 5rem; background: var(--white); }
+.work-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; display: block; }
+.work-heading { font-family: var(--script); font-size: 58px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+.work-intro { font-size: 14px; color: var(--ink-mid); max-width: 520px; font-weight: 300; margin-bottom: 3rem; }
+.work-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.work-card { background: var(--white); border: 1px solid var(--blush-mid); border-left: 3px solid var(--rose); display: grid; grid-template-columns: 200px 1fr; }
+.work-card-left { padding: 2rem 1.75rem; border-right: 1px solid var(--blush-mid); display: flex; flex-direction: column; gap: 0.5rem; }
+.work-card-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--blush-mid); line-height: 1; margin-bottom: 0.5rem; }
+.work-card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.25rem; }
+.work-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--ink); line-height: 1.35; }
+.work-card-right { display: grid; grid-template-columns: 1fr 1fr; }
+.work-field { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--blush); border-right: 1px solid var(--blush); }
+.work-field:nth-child(even) { border-right: none; }
+.work-field:nth-last-child(-n+2) { border-bottom: none; }
+.work-field-label { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 6px; }
+.work-field-value { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.7; }
+
+/* CAREER */
+.career-section { background: var(--white); padding: 6rem 5rem; border-top: 1px solid var(--blush-mid); }
+.career-title-block { text-align: center; margin-bottom: 5rem; }
+.career-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.4rem; }
+.career-heading { font-family: var(--script); font-size: 58px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.career-timeline { display: grid; grid-template-columns: 1fr 2px 1fr; gap: 0 3rem; align-items: start; }
+.career-spine { background: var(--blush-mid); align-self: stretch; }
+.career-col { display: flex; flex-direction: column; }
+.career-col-right { padding-top: 4rem; }
+.career-entry { padding: 2rem 0; border-bottom: 1px solid var(--blush); }
+.career-entry:last-child { border-bottom: none; }
+.career-date { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 6px; }
+.career-role { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin-bottom: 3px; }
+.career-org { font-size: 12px; color: var(--ink-light); margin-bottom: 0.75rem; }
+.career-desc { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.8; }
+
+/* CONTACT */
+.contact-section { background: var(--blush); padding: 7rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.contact-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.4rem; }
+.contact-heading { font-family: var(--script); font-size: 62px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 1.25rem; }
+.contact-desc { font-size: 14px; color: var(--ink-mid); max-width: 380px; line-height: 1.9; }
+.contact-right { display: flex; flex-direction: column; gap: 1rem; }
+.contact-row { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--white); text-decoration: none; color: var(--ink); transition: background 0.2s; }
+.contact-row:hover { background: var(--ink); color: var(--white); }
+.contact-row:hover .contact-row-label { color: rgba(255,255,255,0.45); }
+.contact-row-icon { width: 36px; height: 36px; border: 1px solid var(--blush-mid); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 14px; flex-shrink: 0; transition: border-color 0.2s; }
+.contact-row:hover .contact-row-icon { border-color: rgba(255,255,255,0.2); }
+.contact-row-text { display: flex; flex-direction: column; gap: 2px; }
+.contact-row-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+.contact-row-value { font-size: 14px; font-weight: 400; }
+
+/* ABOUT ME */
+.about-me-section { background: var(--white); padding: 6rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-me-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.4rem; }
+.about-me-heading { font-family: var(--script); font-size: 58px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 2rem; }
+.about-me-body { display: flex; flex-direction: column; gap: 1.25rem; }
+.about-me-body p { font-size: 15px; color: var(--ink-mid); font-weight: 300; line-height: 1.9; }
+.about-me-body p strong { font-weight: 500; color: var(--ink); }
+.about-me-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.about-me-fact { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; background: var(--blush); }
+.about-me-fact-icon { font-family: var(--serif); font-size: 22px; color: var(--rose); flex-shrink: 0; line-height: 1; margin-top: 2px; }
+.about-me-fact-text h4 { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+.about-me-fact-text p { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.7; }
+
+
+.certs-section { background: var(--blush); padding: 6rem 5rem; }
+.certs-header { margin-bottom: 3.5rem; }
+.certs-script { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.4rem; }
+.certs-heading { font-family: var(--script); font-size: 58px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.cert-card { background: var(--white); padding: 2rem 1.75rem; border-bottom: 2px solid transparent; transition: border-color 0.2s, transform 0.2s; }
+.cert-card:hover { border-color: var(--rose); transform: translateY(-3px); }
+.cert-logo { height: 36px; display: flex; align-items: center; margin-bottom: 1.25rem; }
+.cert-issuer { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem; }
+.cert-name { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--ink); line-height: 1.35; margin-bottom: 0.75rem; }
+.cert-desc { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.8; }
+
+/* BACK TO TOP */
+.back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--ink); color: var(--white); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; opacity: 0; pointer-events: none; transition: opacity 0.3s, background 0.2s; z-index: 100; }
+.back-to-top.visible { opacity: 1; pointer-events: all; }
+.back-to-top:hover { background: var(--rose); }
+
+footer { background: var(--ink); padding: 2rem 5rem; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+@media (max-width: 860px) {
+  nav { padding: 0 1.5rem; } .nav-links { display: none; }
+  .hero, .contact-section, .about-me-section { grid-template-columns: 1fr; }
+  .hero-right { min-height: 50vh; padding: 2rem; }
+  .hero-left { padding: 3rem 2rem; }
+  .about-strip { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 2rem; } .about-divider { display: none; }
+  .career-timeline { grid-template-columns: 1fr; } .career-spine { display: none; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-card { border-right: 1px solid var(--blush-mid); border-bottom: 1px solid var(--blush-mid); }
+  .skill-card:nth-child(even) { border-right: none; }
+  .tools-categories { grid-template-columns: 1fr; }
+  .work-card { grid-template-columns: 1fr; }
+  .work-card-left { border-right: none; border-bottom: 1px solid var(--blush-mid); }
+  .work-card-right { grid-template-columns: 1fr; }
+  .work-field { border-right: none; }
+  .work-field:nth-last-child(-n+2) { border-bottom: 1px solid var(--blush); }
+  .work-field:last-child { border-bottom: none; }
+  .work-section, .skills-section, .career-section, .contact-section, .about-me-section { padding: 4rem 2rem; }
+  .certs-section { padding: 4rem 2rem; } .certs-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-monogram">KM</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/kmoattar" target="_blank" class="nav-resume">View LinkedIn →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-script">Hi, I'm</div>
+    <div class="hero-name">Katherine<br>Moattar</div>
+    <div class="hero-role">Digital Marketing &amp; Product Marketing Specialist</div>
+    <div class="hero-sub">CRO · UX Optimization · Omni-Channel Growth · Fintech</div>
+    <p class="hero-bio">Driving customer acquisition, engagement, and revenue through experimentation, data, and customer-centered marketing — at scale in financial services.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;animation:fadeUp 0.7s ease 0.55s both;">
+      <a href="#contact" class="hero-btn" style="margin-bottom:0;">Contact</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-main">
+      <img src="profile.png" alt="Katherine Moattar" />
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="about-strip">
+  <div class="about-stat">
+    <div class="about-stat-num"><em>4+</em></div>
+    <div class="about-stat-label">Years in fintech marketing</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-stat">
+    <div class="about-stat-num"><em>6</em></div>
+    <div class="about-stat-label">Channels managed</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-stat">
+    <div class="about-stat-num"><em>5</em></div>
+    <div class="about-stat-label">Product teams partnered with</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-stat">
+    <div class="about-stat-num"><em>CSPO</em></div>
+    <div class="about-stat-label">Certified Scrum Product Owner</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-stat">
+    <div class="about-stat-num"><em>BSBA</em></div>
+    <div class="about-stat-label">Marketing · UNLV · Cum Laude</div>
+  </div>
+</div>
+
+<!-- ABOUT ME -->
+<section class="about-me-section" id="about">
+  <div class="about-me-left">
+    <span class="about-me-script">A little</span>
+    <div class="about-me-heading">About Me</div>
+    <div class="about-me-body">
+      <p>I'm <strong>Katherine Moattar</strong>, a Digital Marketing Associate II and Digital Product Owner in Las Vegas, NV. My work sits at the intersection of marketing strategy, product thinking, and data — where I design and run programs that reduce friction and drive measurable growth.</p>
+      <p>I started as a digital acquisitions intern and have grown into owning end-to-end <strong>A/B and multivariate experimentation roadmaps</strong>, leading cross-functional product launches, and developing <strong>omni-channel marketing strategy</strong> across email, push, in-app, and landing pages for credit card and insurance products.</p>
+      <p>I graduated <strong>Cum Laude in 2022 with a Bachelor of Science in Business Administration, specializing in Marketing</strong>, from the University of Nevada, Las Vegas. During my time at UNLV, I was a member of the <strong>Honors College</strong> and an active leader in the <strong>UNLV American Marketing Association</strong> — where I collaborated with a team to develop real-world marketing strategies for actual companies, helping bring UNLV to the <strong>finals of the AMA International Collegiate Competition</strong>.</p>
+      <p>I'm currently open to <strong>product marketing, growth marketing, and lifecycle strategy roles</strong> where experimentation and customer empathy are at the core.</p>
+    </div>
+  </div>
+  <div class="about-me-right">
+    <div class="about-me-fact">
+      <div class="about-me-fact-icon">◎</div>
+      <div class="about-me-fact-text">
+        <h4>Based in</h4>
+        <p>Las Vegas, NV — open to remote opportunities nationwide</p>
+      </div>
+    </div>
+    <div class="about-me-fact">
+      <div class="about-me-fact-icon">✦</div>
+      <div class="about-me-fact-text">
+        <h4>Current focus</h4>
+        <p>A/B &amp; multivariate experimentation, omni-channel marketing strategy (email, push, in-app, landing pages), and digital product ownership</p>
+      </div>
+    </div>
+    <div class="about-me-fact">
+      <div class="about-me-fact-icon">◈</div>
+      <div class="about-me-fact-text">
+        <h4>Education</h4>
+        <p>BS Business Administration — Marketing, Cum Laude · UNLV Honors College · CSPO Certified</p>
+      </div>
+    </div>
+    <div class="about-me-fact">
+      <div class="about-me-fact-icon">★</div>
+      <div class="about-me-fact-text">
+        <h4>AMA Competition Finalist</h4>
+        <p>Helped lead UNLV to the finals of the AMA International Collegiate Competition through real-world marketing strategy work</p>
+      </div>
+    </div>
+    <div class="about-me-fact">
+      <div class="about-me-fact-icon">→</div>
+      <div class="about-me-fact-text">
+        <h4>Looking for</h4>
+        <p>Product marketing, growth marketing, or lifecycle roles where data and creative thinking meet</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="skills-header">
+    <div class="skills-heading">Skills</div>
+    <p class="skills-desc">Always willing to learn something new!</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-card-title">Growth &amp; Performance</span>
+      <ul>
+        <li>A/B Testing</li>
+        <li>Customer Acquisition</li>
+        <li>Conversion Rate Optimization</li>
+        <li>Lifecycle Marketing</li>
+        <li>Growth Marketing</li>
+        <li>Funnel Analysis</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-title">Product Marketing &amp; Strategy</span>
+      <ul>
+        <li>Go-to-Market Strategy</li>
+        <li>Product Marketing</li>
+        <li>Product Positioning</li>
+        <li>Customer Segmentation</li>
+        <li>Omni-Channel Marketing Strategy</li>
+        <li>Competitive Analysis</li>
+        <li>Conversion Copywriting</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-title">Analytics &amp; Measurement</span>
+      <ul>
+        <li>Marketing Analytics</li>
+        <li>Dashboard Development</li>
+        <li>KPI Reporting</li>
+        <li>Customer Insights</li>
+        <li>Performance Analysis</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-title">Digital Marketing &amp; Experience</span>
+      <ul>
+        <li>SEO</li>
+        <li>Content Strategy</li>
+        <li>Website Optimization</li>
+        <li>Email Marketing</li>
+        <li>UX/UI Collaboration</li>
+        <li>Landing Page Optimization</li>
+        <li>Graphic Design</li>
+        <li>Web Design &amp; Dev</li>
+        <li>Digital Experience Optimization</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="channels-row">
+    <div class="channels-label">Channels</div>
+    <div class="channels-list">
+      <div class="channel-item"><span class="channel-dot"></span>Email</div>
+      <div class="channel-item"><span class="channel-dot"></span>Push Notifications</div>
+      <div class="channel-item"><span class="channel-dot"></span>In-App Messaging</div>
+      <div class="channel-item"><span class="channel-dot"></span>Landing Pages</div>
+      <div class="channel-item"><span class="channel-dot"></span>Direct Mail</div>
+      <div class="channel-item"><span class="channel-dot"></span>Organic Search (SEO)</div>
+      <div class="channel-item"><span class="channel-dot"></span>Social Media</div>
+      <div class="channel-item"><span class="channel-dot"></span>Display / Digital Ads</div>
+    </div>
+  </div>
+
+  <hr class="tools-divider" />
+  <div class="tools-label">Tools &amp; Platforms</div>
+  <div class="tools-categories">
+    <div class="tool-group">
+      <div class="tool-group-name">Analytics &amp; Data</div>
+      <div class="tool-group-items">
+        <span class="tool-item">Adobe Analytics</span>
+        <span class="tool-item">Google Analytics (GA4)</span>
+        <span class="tool-item">Looker Studio</span>
+        <span class="tool-item">Microsoft Excel</span>
+        <span class="tool-item">SQL</span>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-group-name">Experimentation &amp; CMS</div>
+      <div class="tool-group-items">
+        <span class="tool-item">Adobe Target</span>
+        <span class="tool-item">WordPress / CMS</span>
+        <span class="tool-item">Salesforce Marketing Cloud</span>
+        <span class="tool-item">Hootsuite</span>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-group-name">Product &amp; Design</div>
+      <div class="tool-group-items">
+        <span class="tool-item">Jira</span>
+        <span class="tool-item">Confluence</span>
+        <span class="tool-item">Figma</span>
+        <span class="tool-item">HTML/CSS</span>
+        <span class="tool-item">Canva</span>
+        <span class="tool-item">Adobe Suite</span>
+        <span class="tool-item">Agile / Scrum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work-section" id="work">
+  <div class="work-script">Selected</div>
+  <div class="work-heading">Projects</div>
+  <p class="work-intro">A selection of projects from my time in fintech — each highlighting how I approached a problem, my role, and what was achieved.</p>
+  <div class="work-list">
+
+    <div class="work-card">
+      <div class="work-card-left">
+        <div class="work-card-num">01</div>
+        <div class="work-card-tag">SEO · Content Strategy</div>
+        <h3>Organic Search Growth Program</h3>
+      </div>
+      <div class="work-card-right">
+        <div class="work-field">
+          <div class="work-field-label">Challenge</div>
+          <div class="work-field-value">Increase organic discoverability of the company website to drive unpaid traffic growth over time.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">My Role</div>
+          <div class="work-field-value">Led keyword research, content strategy, and on-page SEO implementation in coordination with web and content teams.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Approach</div>
+          <div class="work-field-value">Identified content gaps, prioritized high-opportunity keywords, and coordinated execution across teams.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Outcome</div>
+          <div class="work-field-value">Delivered measurable year-over-year growth in site impressions and organic clicks — sustained over multiple quarters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-left">
+        <div class="work-card-num">02</div>
+        <div class="work-card-tag">Product Ownership · Launch</div>
+        <h3>New Product Website Launch</h3>
+      </div>
+      <div class="work-card-right">
+        <div class="work-field">
+          <div class="work-field-label">Challenge</div>
+          <div class="work-field-value">Build and launch a new digital product surface to support a new financial services offering, from requirements through go-live.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">My Role</div>
+          <div class="work-field-value">Served as Digital Product Owner — owned the backlog, facilitated sprints, and drove the product to launch.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Approach</div>
+          <div class="work-field-value">Collaborated with web engineering, design, compliance, and marketing; managed requirements documentation and QA.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Outcome</div>
+          <div class="work-field-value">Successfully delivered the website on schedule, providing a new customer-facing digital experience for the product.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-left">
+        <div class="work-card-num">03</div>
+        <div class="work-card-tag">Experimentation · CRO · UX</div>
+        <h3>Customer Acquisition Experimentation Program</h3>
+      </div>
+      <div class="work-card-right">
+        <div class="work-field">
+          <div class="work-field-label">Challenge</div>
+          <div class="work-field-value">Increase engagement with account growth offers by reducing friction in the customer journey.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">My Role</div>
+          <div class="work-field-value">Owned end-to-end testing strategy — hypothesis development, creative recommendations, stakeholder alignment, and performance analysis.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Approach</div>
+          <div class="work-field-value">Analyzed funnel behavior, developed prioritized A/B hypotheses, partnered with design and channel teams on execution.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Outcome</div>
+          <div class="work-field-value">Multiple winning experiences adopted as the ongoing program standard following measurable performance improvements.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-left">
+        <div class="work-card-num">04</div>
+        <div class="work-card-tag">Product Marketing · Messaging</div>
+        <h3>Balance Transfer Journey Optimization</h3>
+      </div>
+      <div class="work-card-right">
+        <div class="work-field">
+          <div class="work-field-label">Challenge</div>
+          <div class="work-field-value">Help customers understand the value of transferring higher-interest balances and reduce drop-off in the offer journey.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">My Role</div>
+          <div class="work-field-value">Led messaging strategy, creative direction, and lifecycle communication design across channels.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Approach</div>
+          <div class="work-field-value">Built a customer-first messaging framework addressing key objections; coordinated design, iconography, and compliance review.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Outcome</div>
+          <div class="work-field-value">Improved offer clarity and strengthened the customer experience; creative approach became the new program baseline.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-left">
+        <div class="work-card-num">05</div>
+        <div class="work-card-tag">Lifecycle · Retention</div>
+        <h3>Lifecycle Messaging Strategy</h3>
+      </div>
+      <div class="work-card-right">
+        <div class="work-field">
+          <div class="work-field-label">Challenge</div>
+          <div class="work-field-value">Reduce customer uncertainty at key account milestones and improve communication clarity throughout the lifecycle.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">My Role</div>
+          <div class="work-field-value">Developed the messaging strategy and copy framework; partnered with channel and compliance teams on execution.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Approach</div>
+          <div class="work-field-value">Mapped the customer journey to identify high-anxiety touchpoints; built a continuity → reassurance → action framework.</div>
+        </div>
+        <div class="work-field">
+          <div class="work-field-label">Outcome</div>
+          <div class="work-field-value">Improved clarity and consistency of lifecycle communications, contributing to a better overall customer experience.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="career-section" id="experience">
+  <div class="career-title-block">
+    <div class="career-script">My Career</div>
+    <div class="career-heading">Journey</div>
+  </div>
+  <div class="career-timeline">
+    <div class="career-col">
+      <div class="career-entry">
+        <div class="career-date">Oct 2024 – Present</div>
+        <div class="career-role">Digital Marketing Associate II</div>
+        <div class="career-org">Credit One Bank · Las Vegas, NV</div>
+        <p class="career-desc">Responsible for developing and executing creative strategic marketing campaigns to drive credit expansion across multiple credit card products. Focused on optimizing omni-channel efforts through collaboration with cross-functional teams, data-driven analysis, and industry best practices to support the organization's growth objectives. Led lifecycle messaging programs focused on driving spend activation and usage frequency through segmented, behavior-based communications.</p>
+      </div>
+      <div class="career-entry">
+        <div class="career-date">Jan 2023 – Oct 2024</div>
+        <div class="career-role">Digital Marketing Associate I</div>
+        <div class="career-org">Credit One Bank · Las Vegas, NV</div>
+        <p class="career-desc">Responsible for conversion optimization of user journeys for credit card and insurance product application flows and landing pages. Worked as a Digital Product Owner collaborating with cross-functional teams to develop a website supporting the launch of a new insurance product. Drove organic traffic growth through SEO strategy — achieving 54% YoY growth in website impressions and 36% YoY growth in clicks through keyword research and content management.</p>
+      </div>
+      <div class="career-entry">
+        <div class="career-date">Jun 2022 – Dec 2022</div>
+        <div class="career-role">Digital Marketing Intern</div>
+        <div class="career-org">Credit One Bank · Digital Acquisitions</div>
+        <p class="career-desc">Focused on conversion optimization for the digital acquisitions team. Utilized Adobe Analytics for application experience analysis, designed email mockups, conducted competitor research, and collaborated on UX, A/B testing, and web development.</p>
+      </div>
+    </div>
+    <div class="career-spine"></div>
+    <div class="career-col career-col-right">
+      <div class="career-entry">
+        <div class="career-date">Jan 2022 – Jun 2022</div>
+        <div class="career-role">Marketing Intern</div>
+        <div class="career-org">Nevada Small Business Development Center · UNLV</div>
+        <p class="career-desc">Social media content creation and campaign management across Facebook, Twitter, Instagram, and LinkedIn using Hootsuite. Conducted digital audits for small businesses and provided consultations to entrepreneurs and business owners.</p>
+      </div>
+      <div class="career-entry">
+        <div class="career-date">Aug 2019 – Jan 2022</div>
+        <div class="career-role">Receptionist</div>
+        <div class="career-org">UNLV College of Sciences Advising Center</div>
+        <p class="career-desc">Managed front desk operations, handled scheduling and communications, provided customer service, and supported special projects for the advising team during undergraduate studies.</p>
+      </div>
+      <div class="career-entry">
+        <div class="career-date">Education</div>
+        <div class="career-role">BS Business Administration — Marketing, Class of 2022</div>
+        <div class="career-org">University of Nevada, Las Vegas · Cum Laude</div>
+        <p class="career-desc">Graduated with honors. Marketing concentration with coursework in digital strategy, consumer behavior, market research, and brand management. GPA: 3.6</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section" id="certifications">
+  <div class="certs-header">
+    <span class="certs-script">Credentials &amp;</span>
+    <div class="certs-heading">Certifications</div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-logo">
+        <img src="https://www.scrumalliance.org/favicon.ico" alt="Scrum Alliance" onerror="this.parentElement.style.display='none'" style="width:32px;height:32px;object-fit:contain;" />
+      </div>
+      <div class="cert-issuer">Scrum Alliance</div>
+      <div class="cert-name">Certified Scrum Product Owner (CSPO)</div>
+      <p class="cert-desc">Agile product ownership, backlog prioritization, stakeholder alignment, and iterative delivery — applied daily in cross-functional marketing and product initiatives.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="32" height="32"><rect width="34" height="34" rx="4" fill="#0A66C2"/><path d="M7 13h4v14H7zm2-6.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM15 13h4v2h.1c.5-1 1.8-2.2 3.9-2.2 4.2 0 5 2.8 5 6.3V27h-4v-7c0-1.7 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V27h-4V13z" fill="white"/></svg>
+      </div>
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">Learning Conversion Copywriting</div>
+      <p class="cert-desc">Product messaging, sales page copywriting, and persuasion frameworks — applied to landing page optimization, CTA testing, and email campaign copy.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="32" height="32"><rect width="34" height="34" rx="4" fill="#0A66C2"/><path d="M7 13h4v14H7zm2-6.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM15 13h4v2h.1c.5-1 1.8-2.2 3.9-2.2 4.2 0 5 2.8 5 6.3V27h-4v-7c0-1.7 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V27h-4V13z" fill="white"/></svg>
+      </div>
+      <div class="cert-issuer">LinkedIn Learning</div>
+      <div class="cert-name">Develop Your SEO Skills</div>
+      <p class="cert-desc">Keyword research, on-page optimization, and content strategy — directly applied to driving measurable year-over-year organic traffic growth in a large-scale fintech environment.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="4" fill="#00539B"/><text x="16" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">AMA</text></svg>
+      </div>
+      <div class="cert-issuer">American Marketing Association</div>
+      <div class="cert-name">AMA International Collegiate Competition — Finalist</div>
+      <p class="cert-desc">Led UNLV's team to the finals of the AMA International Collegiate Competition by developing comprehensive real-world marketing strategies for actual companies — competing against top marketing programs nationwide.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="4" fill="#CF0A2C"/><text x="16" y="21" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">UNLV</text></svg>
+      </div>
+      <div class="cert-issuer">University of Nevada, Las Vegas</div>
+      <div class="cert-name">Honors College — Member</div>
+      <p class="cert-desc">Accepted into the UNLV Honors College, recognizing academic excellence. Graduated Cum Laude in 2022 with a BS in Business Administration, specializing in Marketing.</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="4" fill="#1D6F42"/><text x="16" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">X</text></svg>
+      </div>
+      <div class="cert-issuer">Microsoft</div>
+      <div class="cert-name">Excel PivotTables: Mastering PivotTables and PivotCharts</div>
+      <p class="cert-desc">Advanced data summarization, reporting, and visualization using Excel PivotTables and PivotCharts for marketing performance analysis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <div class="contact-script">Let's</div>
+    <div class="contact-heading">Connect</div>
+    <p class="contact-desc">Open to product marketing, growth marketing, lifecycle strategy, and digital product roles — where experimentation, data, and customer empathy drive the work. Based in Las Vegas, NV — open to remote opportunities.</p>
+  </div>
+  <div class="contact-right">
+    <a href="mailto:katmoattar@gmail.com" class="contact-row">
+      <div class="contact-row-icon">@</div>
+      <div class="contact-row-text">
+        <span class="contact-row-label">Email</span>
+        <span class="contact-row-value">katmoattar@gmail.com</span>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/kmoattar" target="_blank" class="contact-row">
+      <div class="contact-row-icon">in</div>
+      <div class="contact-row-text">
+        <span class="contact-row-label">LinkedIn</span>
+        <span class="contact-row-value">linkedin.com/in/kmoattar</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Katherine Moattar</span>
+  <span>Las Vegas, NV · Digital Marketing · Product Strategy</span>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>
